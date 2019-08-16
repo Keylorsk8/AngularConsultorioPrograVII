@@ -1,0 +1,44 @@
+<div class="tituloBanner container" style="margin-top: 50px">
+  <div class="col-lg-12 mx-auto">
+    <div class="site-heading">
+      <h1>Mantenimiento Alergias</h1>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <ul class="nav nav-tabs nav-pills">
+        <li class="nav-item">
+          <a
+            class="nav-link "
+            [routerLink]="['/alergiaM/lista']"
+            routerLinkActive="active"
+            [class.active]="router.url == '/alergiaM'"
+            >Lista de Alergias</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            [routerLink]="['/alergiaM/create']"
+            routerLinkActive="active"
+            >Crear Alergia</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            [routerLink]="['/alergiaM/restore']"
+            routerLinkActive="active"
+          >Resturar Alergia</a>
+        </li>
+      </ul>
+      <app-alergia-all
+        *ngIf="router.url == '/alergiaM'"
+      ></app-alergia-all>
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="table-responsive">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Imagen</th>
+          <th>Alergia</th>
+          <th>Categoría</th>
+          <th>Reacción</th>
+          <th>Restaurar</th>
+        </tr>
+      </thead>
+      <tbody *ngIf="datos != null">
+        <tr *ngFor="let vj of datos?.Alergias">
+            <img
+            style="width: 200px"
+            *ngIf="vj.imagen != null"
+            class="custom_table_image img-fluid img-thumbnail"
+            [src]="obtenerImagen(vj.imagen)"
+          />
+          <img
+            style="width: 200px"
+            *ngIf="vj.imagen == null"
+            class="custom_table_image img-fluid img-thumbnail"
+            [src]="imagenDefault()"
+          />
+
+          <td>{{ vj.nombre }}</td>
+          <td>{{ vj.categoria }}</td>
+          <td>{{ vj.reaccion }}</td>
+          <td>
+            <button (click)="linkRestaurar(vj.id)" class="btn btn-danger">Resturar</button>
+          </td>
+        </tr>
+      </tbody>
+      <tbody *ngIf="!datos?.Alergias">
+        <tr>
+          <td colspan="4">
+            No hay datos!
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

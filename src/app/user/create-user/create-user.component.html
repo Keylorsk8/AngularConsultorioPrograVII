@@ -1,0 +1,85 @@
+<div class="container">
+  <div style="height: 40px"></div>
+  <div class="row">
+    <div class="col-sm-12">
+      <form #form="ngForm" (ngSubmit)="onSubmit(form.value)">
+        <div class="form-group">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Nombre usuario"
+            name="name"
+            ngModel
+            required
+          />
+        </div>
+        <div class="form-group">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Primer Apellido"
+            name="primerApellido"
+            ngModel
+            required
+          />
+        </div>
+        <div class="form-group">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Segundo Apellido"
+            name="segundoApellido"
+            ngModel
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label>Género</label>
+          <div class="form-group">
+            <label class="form-control">
+              <input type="radio" value="Masculino" name="sexo" ngModel>
+              Maculino
+            </label>
+            <label class="form-control">
+              <input type="radio" value="Femenino" name="sexo" ngModel>
+              Femenino
+            </label>
+            <label class="form-control">
+              <input type="radio" value="Otro" name="sexo" ngModel>
+              Otro
+            </label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <input
+            type="text"
+            class="form-control"
+            id="email"
+            placeholder="Correo Electrónico"
+            name="email"
+            ngModel
+            required
+          />
+        </div>
+        <div class="form-group">
+          <input
+            type="text"
+            class="form-control"
+            id="password"
+            placeholder="Contraseña"
+            name="password"
+            ngModel
+            required
+          />
+        </div>
+        <div class="align-center">
+          <button type="submit" class="btn btn-primary btn-block" id="registeruser">
+            Registrar
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+

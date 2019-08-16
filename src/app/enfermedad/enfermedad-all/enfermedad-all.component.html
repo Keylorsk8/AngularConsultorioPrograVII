@@ -1,0 +1,36 @@
+<div class="tituloBanner container" style="margin-top: 50px">
+  <div class="col-lg-12 mx-auto">
+    <div class="site-heading">
+      <h1>Listado Enfermedades</h1>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="table-responsive">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Imagen</th>
+          <th>Nombre</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let enf of datos?.Enfermedades">
+          <img
+            style="width: 200px"
+            *ngIf="enf.imagen != null"
+            class="custom_table_image img-fluid img-thumbnail"
+            [src]="obtenerImagen(enf.imagen)"
+          />
+          <img
+            style="width: 200px"
+            *ngIf="enf.imagen == null"
+            class="custom_table_image img-fluid img-thumbnail"
+            [src]="imagenDefault()"
+          />
+          <td>{{ enf.nombre }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

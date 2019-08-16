@@ -1,0 +1,52 @@
+<div class="container">
+  <div class="table-responsive">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Imagen</th>
+          <th>Alergia</th>
+          <th>Categoría</th>
+          <th>Reacción</th>
+          <th>Editar</th>
+          <th>Eliminar</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let vj of datos?.Alergias">
+          <img
+            style="width: 200px"
+            *ngIf="vj.imagen != null"
+            class="custom_table_image img-fluid img-thumbnail"
+            [src]="obtenerImagen(vj.imagen)"
+          />
+          <img
+            style="width: 200px"
+            *ngIf="vj.imagen == null"
+            class="custom_table_image img-fluid img-thumbnail"
+            [src]="imagenDefault()"
+          />
+          <td>{{ vj.nombre }}</td>
+          <td>{{ vj.categoria }}</td>
+          <td>{{ vj.reaccion }}</td>
+          <td>
+            <!-- <a [routerLink]="['../videojuego/update/', vj.id]">Editar</a> -->
+            <!--    Es necesario retroceder un nivel
+                 Porque esta dentro de un componente que contiene rutas hijas -->
+            <button (click)="linkEditar(vj.id)" class="btn btn-info">
+              Editar
+            </button>
+          </td>
+          <td>
+            <button
+              type="submit"
+              (click)="linkEliminar(vj.id)"
+              class="btn btn-danger"
+            >
+              Eliminar
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,40 @@
+<div class="tituloBanner container" style="margin-top: 50px">
+  <div class="col-lg-12 mx-auto">
+    <div class="site-heading">
+      <h1>Listado Actividades Físicas</h1>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="table-responsive">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Imagen</th>
+          <th>Actividad</th>
+          <th>Cantidad de Minutos</th>
+          <th>Cantidad Veces Por Semana</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let vj of datos?.Actividades">
+          <img
+            style="width: 200px"
+            *ngIf="vj.imagen != null"
+            class="custom_table_image img-fluid img-thumbnail"
+            [src]="obtenerImagen(vj.imagen)"
+          />
+          <img
+            style="width: 200px"
+            *ngIf="vj.imagen == null"
+            class="custom_table_image img-fluid img-thumbnail"
+            [src]="imagenDefault()"
+          />
+          <td>{{ vj.nombre }}</td>
+          <td style="text-align: center">{{ vj.minutosDeDuracion }} minutos </td>
+          <td style="text-align: center">{{ vj.cantidadVecesPorSemana }} veces </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
