@@ -7,7 +7,7 @@
           <input
             type="text"
             class="form-control"
-            placeholder="Nombre usuario"
+            placeholder="Nombre Médico"
             name="name"
             ngModel
             required
@@ -72,8 +72,19 @@
             ngModel
             required
           />
+          <div class="form-group">
+            <label for="especialidades">Especialidad</label>
+            <select
+              class="form-control"
+              name="especialidad_id"
+              ngModel>
+              <option *ngFor="let esp of especialidades?.Especialidades" [value]="esp.id">
+                {{ esp.nombre }}
+              </option>
+            </select>
+          </div>
         </div>
-        {{form.value}}
+        {{ form.value | json }}
         <div class="align-center">
           <button type="submit" class="btn btn-primary btn-block" id="registeruser">
             Registrar

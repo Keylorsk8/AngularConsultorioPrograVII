@@ -12,11 +12,13 @@
         <tr>
           <th>Imagen</th>
           <th>Nombre</th>
+          <th>Observación</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let enf of datos?.Enfermedades">
-          <img
+          <td>
+            <img
             style="width: 200px"
             *ngIf="enf.imagen != null"
             class="custom_table_image img-fluid img-thumbnail"
@@ -28,7 +30,9 @@
             class="custom_table_image img-fluid img-thumbnail"
             [src]="imagenDefault()"
           />
+          </td>
           <td>{{ enf.nombre }}</td>
+          <td>{{ enf.observaciones }}</td>
         </tr>
       </tbody>
     </table>

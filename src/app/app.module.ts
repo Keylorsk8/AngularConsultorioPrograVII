@@ -19,6 +19,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { ActividadFisicaModule } from './actividad-fisica/actividad-fisica.module';
 import { EnfermedadModule } from './enfermedad/enfermedad.module';
+import { MedicoModule } from './medico/medico.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -35,6 +36,7 @@ import { EnfermedadModule } from './enfermedad/enfermedad.module';
     AlergiaModule,
     ActividadFisicaModule,
     EnfermedadModule,
+    MedicoModule,
     UserModule,
     CoreModule,
     AppRoutingModule
