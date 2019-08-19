@@ -8,6 +8,7 @@ export interface UserEntidad {
   sexo: string;
   rol_id: number;
   especialidad_id: number;
+  especialidad: string;
   remember_token: string;
   email_verified_at: Date;
   created_at: Date;

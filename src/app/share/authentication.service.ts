@@ -12,6 +12,8 @@ import { RolEntidad } from './models/rol-entidad';
 import { UsuarioLogin } from './models/usuarioLogin';
 import { ErrorEntidad } from '../alergia/create-alergia/create-alergia.component';
 import { CustomHandlerErrorService } from './custom-handler-error.service';
+import { Especialidad } from './models/especialidad';
+import { User } from './models/user';
 
 @Injectable({
   providedIn: 'root'
@@ -31,6 +33,7 @@ export class AuthenticationService {
   constructor(
     private http: HttpClient,
     private handler: CustomHandlerErrorService
+
   ) {
     this.currentUserSubject = new BehaviorSubject<UsuarioLogin>(
       JSON.parse(localStorage.getItem('currentUser'))
@@ -46,10 +49,25 @@ export class AuthenticationService {
     this.usuario.rol_id = 3;
     return this.http
       .post<UserEntidad>(
-        this.ServerUrl + 'usuario/register',
+        this.ServerUrl + 'usuario/registrar',
         this.usuario,
         this.httpOptions
       )
+      .pipe(catchError(this.handler.handleError.bind(this)));
+  }
+  createMedico(user: UserEntidad): Observable<UserEntidad> {
+    this.usuario = user;
+    this.usuario.rol_id = 2;
+    let headers = new HttpHeaders();
+    if (this.currentUser) {
+      headers = headers.append(
+        'Authorization',
+        'Bearer ' + this.currentUserValue.access_token
+      );
+    }
+    return this.http
+      .post<UserEntidad>(
+        this.ServerUrl + 'usuario/registrarMedico', this.usuario, { headers })
       .pipe(catchError(this.handler.handleError.bind(this)));
   }
   loginUser(user: UserEntidad): Observable<UsuarioLogin> {
@@ -73,5 +91,27 @@ export class AuthenticationService {
     // eliminar usuario del almacenamiento local para cerrar la sesión del usuario
     localStorage.removeItem('currentUser');
     this.currentUserSubject.next(null);
+  }
+  getEspecialidades(): Observable<Especialidad> {
+    return this.http
+      .get<Especialidad>(this.ServerUrl + 'especialidad')
+      .pipe(catchError(this.handler.handleError.bind(this)));
+  }
+  getEspecialidad(id: number): Observable<Especialidad> {
+    return this.http
+      .get<Especialidad>(this.ServerUrl + 'especialidad/' + id)
+      .pipe(catchError(this.handler.handleError.bind(this)));
+  }
+  getMedicos(): Observable<User> {
+    let headers = new HttpHeaders();
+    if (this.currentUser) {
+      headers = headers.append(
+        'Authorization',
+        'Bearer ' + this.currentUserValue.access_token
+      );
+    }
+    return this.http
+      .get<User>(this.ServerUrl + 'usuario/getMedicos', { headers })
+      .pipe(catchError(this.handler.handleError.bind(this)));
   }
 }

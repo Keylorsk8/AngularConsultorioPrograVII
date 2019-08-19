@@ -21,6 +21,7 @@ const users: UserEntidad[] = [
     segundoApellido: 'user2',
     sexo: 'Otro',
     especialidad_id: null,
+    especialidad: null,
     email_verified_at: new Date('2019-07-16 02:31:58'),
     email: 'usuario1@gmail.com',
     password: '123456',
