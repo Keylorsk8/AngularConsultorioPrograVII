@@ -80,6 +80,50 @@
           </a>
         </div>
       </li>
+      <li class="nav-item dropdown" *ngIf="currentUser?.user">
+        <a
+          style="color: white !important"
+          *ngIf="currentUser.user.rol_id == 2"
+          class="nav-link dropdown-toggle"
+          id="navbarDropdown"
+          role="button"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false"
+        >
+          Mantenimientos
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a
+            class="dropdown-item"
+            routerLinkActive="active"
+          >
+            Registrar Consulta
+          </a>
+        </div>
+      </li>
+      <li class="nav-item dropdown" *ngIf="currentUser?.user">
+        <a
+          style="color: white !important"
+          *ngIf="currentUser.user.rol_id == 3"
+          class="nav-link dropdown-toggle"
+          id="navbarDropdown"
+          role="button"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false"
+        >
+          Mantenimientos
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a
+            class="dropdown-item"
+            routerLinkActive="active"
+          >
+            Agendar Cita
+          </a>
+        </div>
+      </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">
       <ul class="navbar-nav mr-auto">

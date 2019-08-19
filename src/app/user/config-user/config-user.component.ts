@@ -36,7 +36,7 @@ export class ConfigUserComponent implements OnInit {
     this.authenticationService.me().subscribe(
       (respuesta: User) => {
         this.datos = respuesta;
-        this.ale = this.datos.Usuarios[0];
+        this.user = this.datos.Usuarios[0];
       },
       error => (this.error = error)
     );
