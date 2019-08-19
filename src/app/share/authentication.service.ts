@@ -78,6 +78,7 @@ export class AuthenticationService {
         this.httpOptions
       )
       .pipe(
+        // tslint:disable-next-line: no-shadowed-variable
         map(user => {
           // almacene los detalles del usuario y el token jwt en
           // el almacenamiento local para mantener al usuario conectado entre las actualizaciones de la página
