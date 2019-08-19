@@ -111,7 +111,19 @@ export class AuthenticationService {
       );
     }
     return this.http
-      .get<User>(this.ServerUrl + 'usuario/getMedicos', { headers })
+      .post<User>(this.ServerUrl + 'usuario/medico', { headers })
+      .pipe(catchError(this.handler.handleError.bind(this)));
+  }
+  me(): Observable<User> {
+    let headers = new HttpHeaders();
+    if (this.currentUser) {
+      headers = headers.append(
+        'Authorization',
+        'Bearer ' + this.currentUserValue.access_token
+      );
+    }
+    return this.http
+      .post<User>(this.ServerUrl + 'usuario/show', { headers })
       .pipe(catchError(this.handler.handleError.bind(this)));
   }
 }

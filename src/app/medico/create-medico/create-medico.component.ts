@@ -35,7 +35,7 @@ export class CreateMedicoComponent implements OnInit, DoCheck {
       (respuesta: UserEntidad) => (this.datos = respuesta),
       error => {
         this.error = error;
-        this.notificacion.msjValidacion(this.error[0]);
+        this.notificacion.msjValidacion(this.error);
       },
       () => {
         this.router.navigate(['/medicoM'], { queryParams: { medico: 'true' } });
