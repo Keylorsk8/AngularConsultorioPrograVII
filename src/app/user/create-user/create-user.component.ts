@@ -16,7 +16,7 @@ export class CreateUserComponent implements OnInit, DoCheck {
   usuario: UserEntidad;
   datos: UserEntidad;
   roles: RolEntidad;
-  error: ErrorEntidad[];
+  error: any;
   constructor(
     private router: Router,
     private auntenticationService: AuthenticationService,
@@ -33,7 +33,7 @@ export class CreateUserComponent implements OnInit, DoCheck {
       (respuesta: UserEntidad) => (this.datos = respuesta),
       error => {
         this.error = error;
-        this.notificacion.msjValidacion(this.error[0]);
+        this.notificacion.msjError('', this.error.statusText);
       },
       () => {
         this.router.navigate(['/usuario/login'], { queryParams: { registrado: 'true' } });

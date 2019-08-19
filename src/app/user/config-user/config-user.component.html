@@ -2,15 +2,13 @@
   <div style="height: 40px"></div>
   <div class="row">
     <div class="col-sm-12">
-      <form #form="ngForm" (ngSubmit)="onSubmit(form.value)">
+      <form #form="ngForm">
         <div class="form-group">
           <input
             type="text"
             class="form-control"
-            placeholder="Nombre Médico"
-            name="name"
-            ngModel
-            required
+            [value]="user.name"
+            disabled="disabled"
           />
         </div>
         <div class="form-group">
@@ -33,6 +31,7 @@
             required
           />
         </div>
+        <h1>{{currentUserValue.user.name}}</h1>
         <div class="form-group">
           <label>Género</label>
           <div class="form-group">
@@ -64,7 +63,7 @@
         </div>
         <div class="form-group">
           <input
-            type="password"
+            type="text"
             class="form-control"
             id="password"
             placeholder="Contraseña"
@@ -72,19 +71,8 @@
             ngModel
             required
           />
-          <div class="form-group">
-            <label for="especialidades">Especialidad</label>
-            <select
-              class="form-control"
-              name="especialidad_id"
-              ngModel>
-              <option *ngFor="let esp of especialidades?.Especialidades" [value]="esp.id" [selected]="9">
-                {{ esp.nombre }}
-              </option>
-            </select>
-          </div>
         </div>
-        {{ form.value | json }}
+        {{form.value}}
         <div class="align-center">
           <button type="submit" class="btn btn-primary btn-block" id="registeruser">
             Registrar

@@ -28,4 +28,8 @@ export class InicioComponent implements OnInit {
     }
   }
 
+  linkAcercade() {
+    this.router.navigate(['home/acercade']);
+  }
+
 }

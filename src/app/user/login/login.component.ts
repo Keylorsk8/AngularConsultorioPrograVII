@@ -41,7 +41,10 @@ export class LoginComponent implements OnInit {
     // suscripción para uso del servicio
     this.auntenticationService.loginUser(obj).subscribe(
       (respuesta: UsuarioLogin) => (this.datos = respuesta),
-      error => (this.error = error),
+      error => {
+        this.error = error;
+        this.notificacion.msjError('', this.error.statusText);
+      },
       () => {
         this.router.navigate(['/']);
       }
