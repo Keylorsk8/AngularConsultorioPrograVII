@@ -28,6 +28,6 @@ export class HeaderComponent implements OnInit {
   }
 
   linkConfiguracion() {
-    this.router.navigate(['config/' + this.currentUser.user.id]);
+    this.router.navigate(['config/' + this.currentUser.user.id], { queryParams: { id: this.currentUser.user.id }});
   }
 }

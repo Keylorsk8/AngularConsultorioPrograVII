@@ -82,7 +82,7 @@
       </li>
       <li class="nav-item dropdown" *ngIf="currentUser?.user">
         <a
-          style="color: white !important"
+          style="color: white !important; cursor: pointer;"
           *ngIf="currentUser.user.rol_id == 2"
           class="nav-link dropdown-toggle"
           id="navbarDropdown"
@@ -95,6 +95,7 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a
+            style="cursor: pointer;"
             class="dropdown-item"
             routerLinkActive="active"
           >
@@ -104,7 +105,7 @@
       </li>
       <li class="nav-item dropdown" *ngIf="currentUser?.user">
         <a
-          style="color: white !important"
+          style="color: white !important; cursor: pointer;"
           *ngIf="currentUser.user.rol_id == 3"
           class="nav-link dropdown-toggle"
           id="navbarDropdown"
@@ -117,6 +118,7 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a
+            style="cursor: pointer;"
             class="dropdown-item"
             routerLinkActive="active"
           >
@@ -147,8 +149,12 @@
             aria-haspopup="true"
             aria-expanded="false"
           >
-            <i class="fa fa-user-circle" style="margin-right: 5px"></i
-            >{{ currentUser.user.name + " " + currentUser.user.primerApellido }}
+            <i class="fa fa-user-circle" style="margin-right: 5px"></i>
+            {{
+              currentUser.user.name + " " +
+              currentUser.user.primerApellido + " - "
+            }}
+            {{ currentUser.user.rol_id == 1 ? 'Administrador' : currentUser.user.rol_id == 2 ? 'Médico' : 'Paciente' }}
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a

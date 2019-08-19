@@ -1,85 +1,82 @@
-<div class="container">
+<div class="container" style="margin-top: 70px">
+  <h1 *ngIf="this.currentUser.user.rol_id == 1">
+    Configuración de la Cuenta - Administrador
+  </h1>
+  <h1 *ngIf="this.currentUser.user.rol_id == 2">
+    Configuración de la Cuenta - Médico
+  </h1>
+  <h1 *ngIf="this.currentUser.user.rol_id == 3">
+    Configuración de la Cuenta - Paciente
+  </h1>
   <div style="height: 40px"></div>
   <div class="row">
     <div class="col-sm-12">
       <form #form="ngForm">
         <div class="form-group">
+          <label>Nombre</label>
           <input
             type="text"
             class="form-control"
-            [value]="user.name"
+            value="{{ this.currentUser.user.name }}"
             disabled="disabled"
           />
         </div>
         <div class="form-group">
+          <label>Primer Apellido</label>
           <input
             type="text"
             class="form-control"
-            placeholder="Primer Apellido"
-            name="primerApellido"
-            ngModel
-            required
+            value="{{ this.currentUser.user.primerApellido }}"
+            disabled="disabled"
           />
         </div>
         <div class="form-group">
+          <label>Segundo Apellido</label>
           <input
             type="text"
+            value="{{ this.currentUser.user.segundoApellido }}"
             class="form-control"
-            placeholder="Segundo Apellido"
-            name="segundoApellido"
-            ngModel
-            required
+            disabled="disabled"
           />
         </div>
-        <h1>{{currentUserValue.user.name}}</h1>
         <div class="form-group">
           <label>Género</label>
-          <div class="form-group">
-            <label class="form-control">
-              <input type="radio" value="Masculino" name="sexo" ngModel>
-              Maculino
-            </label>
-            <label class="form-control">
-              <input type="radio" value="Femenino" name="sexo" ngModel>
-              Femenino
-            </label>
-            <label class="form-control">
-              <input type="radio" value="Otro" name="sexo" ngModel>
-              Otro
-            </label>
-          </div>
+          <input
+            type="text"
+            value="{{ this.currentUser.user.sexo }}"
+            class="form-control"
+            disabled="disabled"
+          />
         </div>
-
         <div class="form-group">
+          <label>Correo Electrónico</label>
           <input
             type="text"
             class="form-control"
+            value="{{ this.currentUser.user.email }}"
             id="email"
-            placeholder="Correo Electrónico"
-            name="email"
-            ngModel
-            required
+            disabled="disabled"
           />
         </div>
-        <div class="form-group">
+        <div class="form-group" *ngIf="this.currentUser.user.rol_id == 2">
+          <label>Especialidad Médica</label>
           <input
             type="text"
             class="form-control"
-            id="password"
-            placeholder="Contraseña"
-            name="password"
-            ngModel
-            required
+            value="{{ this.currentUser.user.especialidad }}"
+            disabled="disabled"
           />
         </div>
-        {{form.value}}
         <div class="align-center">
-          <button type="submit" class="btn btn-primary btn-block" id="registeruser">
-            Registrar
+          <button
+            type="submit"
+            class="btn btn-primary btn-block"
+            id="registeruser"
+          >
+            Cambiar Contraseña
           </button>
         </div>
       </form>
     </div>
   </div>
 </div>
-

@@ -14,36 +14,20 @@ import { UsuarioLogin } from 'src/app/share/models/usuarioLogin';
   styleUrls: ['./config-user.component.css']
 })
 export class ConfigUserComponent implements OnInit {
-  private currentUserSubject: BehaviorSubject<UsuarioLogin>;
-  public currentUser: Observable<UsuarioLogin>;
-
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private authenticationService: AuthenticationService,
     private notificacion: NotificacionService
   ) {
-    this.currentUserSubject = new BehaviorSubject<UsuarioLogin>(
-      JSON.parse(localStorage.getItem('currentUser'))
+    this.authenticationService.currentUser.subscribe(
+      x => (this.currentUser = x)
     );
-    this.currentUser = this.currentUserSubject.asObservable();
-   }
-  user: UserEntidad;
-  datos: User;
+  }
+
+  currentUser: UsuarioLogin;
   error: any;
 
   ngOnInit() {
-    this.authenticationService.me().subscribe(
-      (respuesta: User) => {
-        this.datos = respuesta;
-        this.user = this.datos.Usuarios[0];
-      },
-      error => (this.error = error)
-    );
   }
-
-  public get currentUserValue(): UsuarioLogin {
-    return this.currentUserSubject.value;
-  }
-
 }
